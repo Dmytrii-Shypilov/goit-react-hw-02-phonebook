@@ -1,0 +1,13 @@
+.label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.field {
+    margin-left: 5px;
+}
+
+.btn {
+    display: flex;
+    justify-content: center;
+}
