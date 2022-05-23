@@ -10,23 +10,31 @@ import Filter from './Filter';
 
 class PhonebookApp extends Component {
   state = {
-    contacts: [],
+    contacts: [
+      { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
+      { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
+      { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
+      { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
+    ],
     filter: '',
   };
 
   addContact = newData => {
+    const { contacts } = this.state;
+    const { name, number } = newData;
+
+    if (contacts.find(contact => contact.name === name)) {
+      return alert(`${name} is already added!`);
+    }
+
     this.setState(prevState => {
       const { contacts } = prevState;
-      const { name, number } = newData;
+
       const newContact = {
         id: nanoid(),
         name,
         number,
       };
-
-      if (contacts.find(contact => contact.name === name)) {
-        return alert(`${name} is already added!`);
-      }
 
       return {
         contacts: [...contacts, newContact],
@@ -65,11 +73,11 @@ class PhonebookApp extends Component {
       this;
     const contacts = getFilteredContactsList();
     return (
-      <div>
-        <h1>Phonebook</h1>
+      <div className={style.bookSection}>
+        <h1 className={style.title}>Phonebook</h1>
         <ContactForm onSubmit={addContact} />
 
-        <h2>Contacts</h2>
+        <h2 className={style.title}>Contacts</h2>
         <Filter filterChange={filterChange} />
         <ContactList contacts={contacts} deleteContact={deleteContact} />
       </div>
