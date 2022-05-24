@@ -1,6 +1,5 @@
 import style from './contact-form.module.css';
 
-import PropTypes from 'prop-types';
 import { Component } from 'react';
 
 class ContactForm extends Component {

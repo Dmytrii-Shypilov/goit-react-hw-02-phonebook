@@ -1,7 +1,6 @@
 import style from './contact-list.module.css';
 
 import PropTypes from 'prop-types';
-import { nanoid } from 'nanoid';
 
 const ContactList = ({ contacts, deleteContact }) => {
   const elements = contacts.map(contact => {
