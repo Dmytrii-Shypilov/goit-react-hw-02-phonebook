@@ -17,4 +17,5 @@
 .btn {
   display: block;
   transform: translateX(150%);
+  cursor: pointer;
 }
