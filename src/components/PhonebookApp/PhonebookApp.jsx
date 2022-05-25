@@ -22,7 +22,11 @@ class PhonebookApp extends Component {
     const { contacts } = this.state;
     const { name, number } = newData;
 
-    if (contacts.find(contact => contact.name === name)) {
+    if (
+      contacts.find(
+        contact => contact.name.toLowerCase() === name.toLowerCase()
+      )
+    ) {
       return alert(`${name} is already added!`);
     }
 
@@ -44,9 +48,9 @@ class PhonebookApp extends Component {
   };
 
   deleteContact = id => {
-    const { contacts } = this.state;
-    const updatedList = contacts.filter(contact => contact.id !== id);
-    return this.setState({ contacts: updatedList });
+    this.setState(({ contacts }) => ({
+      contacts: contacts.filter(item => item.id !== id),
+    }));
   };
 
   filterChange = ({ target }) => {
